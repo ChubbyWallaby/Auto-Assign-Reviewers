@@ -69,14 +69,14 @@ export async function handlePullRequest(context: Context): Promise<void> {
 
       if (reviewers.length > 0 || team_reviewers.length > 0) {
         const params = context.pullRequest({ reviewers, team_reviewers })
-        const result = await context.octokit.pulls.reviewers(params)
+        const result = await context.octokit.pulls.requestReviewers(params)
         context.log(result)
       }
     } catch (error) {
       context.log(error)
     }
   }
-/*
+
   if (addAssignees) {
     try {
       const assignees = chooseAssignees(owner, config)
@@ -90,5 +90,5 @@ export async function handlePullRequest(context: Context): Promise<void> {
       context.log(error)
     }
   }
-  */
+  
 }
