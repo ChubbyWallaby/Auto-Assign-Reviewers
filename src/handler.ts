@@ -69,7 +69,7 @@ export async function handlePullRequest(context: Context): Promise<void> {
 
       if (reviewers.length > 0 || team_reviewers.length > 0) {
         const params = context.pullRequest({ reviewers, team_reviewers })
-        const result = await context.octokit.pulls.addAssignees(params)
+        const result = await context.octokit.pulls.reviewers(params)
         context.log(result)
       }
     } catch (error) {
